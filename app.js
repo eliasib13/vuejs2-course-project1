@@ -18,11 +18,16 @@ new Vue({
                 return;
             }
 
-            this.playerHealth -= this.calculateDamage(5, 12);
-            this.checkWin();
+            this.monsterAttacks();
         },
         specialAttack: function() {
+            this.monsterHealth -= this.calculateDamage(10, 20);;
             
+            if (this.checkWin()) {
+                return;
+            }
+
+            this.monsterAttacks();
         },
         heal: function() {
 
@@ -53,6 +58,10 @@ new Vue({
                 return true
             }
             return false;
+        },
+        monsterAttacks: function() {
+            this.playerHealth -= this.calculateDamage(5, 12);
+            this.checkWin();
         }
     }
 });
